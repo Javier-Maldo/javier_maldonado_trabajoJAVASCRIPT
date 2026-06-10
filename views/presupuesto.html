@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Presupuesto</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <script defer src="../js/validacion.js"></script>
+    <script defer src="../js/presupuesto.js"></script>
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img src="../images/logo.png" alt="Logo" class="logo" />
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li class="activo"><a href="presupuesto.html">Presupuesto</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="form-wrap">
+      <h1>Solicitud de presupuesto</h1>
+      <p class="ayuda">
+        Completa tus datos y elige opciones. El presupuesto se actualiza
+        automáticamente.
+      </p>
+      <form id="formPresupuesto" novalidate>
+        <!-- Datos de contacto -->
+        <fieldset>
+          <legend>Datos de contacto</legend>
+          <div class="grid-2">
+            <div class="fila">
+              <label for="nombre">Nombre <span class="req">*</span></label>
+              <input
+                type="text"
+                id="nombre"
+                name="nombre"
+                maxlength="15"
+                required
+                placeholder="Nombre (máx. 15 letras)"
+                autocomplete="name"
+                inputmode="text"
+              />
+              <div
+                id="err-nombre"
+                class="errores"
+                role="alert"
+                aria-live="polite"
+              ></div>
+            </div>
+            <div class="fila">
+              <label for="apellidos"
+                >Apellidos <span class="req">*</span></label
+              >
+              <input
+                type="text"
+                id="apellidos"
+                name="apellidos"
+                maxlength="40"
+                required
+                placeholder="Apellidos (máx. 40 letras)"
+                autocomplete="family-name"
+                inputmode="text"
+              />
+              <div
+                id="err-apellidos"
+                class="errores"
+                role="alert"
+                aria-live="polite"
+              ></div>
+            </div>
+            <div class="fila">
+              <label for="telefono">Teléfono <span class="req">*</span></label>
+              <input
+                type="text"
+                id="telefono"
+                name="telefono"
+                maxlength="9"
+                required
+                placeholder="9 dígitos"
+                autocomplete="tel"
+                inputmode="numeric"
+              />
+              <div
+                id="err-telefono"
+                class="errores"
+                role="alert"
+                aria-live="polite"
+              ></div>
+            </div>
+            <div class="fila">
+              <label for="email"
+                >Correo electrónico <span class="req">*</span></label
+              >
+              <input
+                type="email"
+                id="email"
+                name="email"
+                required
+                placeholder="tu_email@dominio.com"
+                autocomplete="email"
+              />
+              <div
+                id="err-email"
+                class="errores"
+                role="alert"
+                aria-live="polite"
+              ></div>
+            </div>
+          </div>
+        </fieldset>
+        <!-- Presupuesto -->
+        <fieldset>
+          <legend>Presupuesto</legend>
+          <div class="grid-2">
+            <div class="fila">
+              <label for="producto">Producto</label>
+              <select id="producto" name="producto">
+                <option value="100">Web Básica — 100 €</option>
+                <option value="250">Tienda Online — 250 €</option>
+                <option value="400">Web Corporativa — 400 €</option>
+              </select>
+            </div>
+            <div class="fila">
+              <label for="plazo">Plazo de entrega (meses)</label>
+              <input
+                type="number"
+                id="plazo"
+                name="plazo"
+                min="1"
+                max="24"
+                step="1"
+                value="1"
+              />
+              <small class="ayuda"
+                >Descuento automático: 6 a 11 meses: 10% | 12+ meses: 15%</small
+              >
+            </div>
+          </div>
+          <div class="fila">
+            <label>Extras</label>
+            <div class="extras">
+              <label
+                ><input type="checkbox" class="extra" value="50" /> Color
+                personalizado (+50 €)</label
+              >
+              <label
+                ><input type="checkbox" class="extra" value="80" /> Tipografía
+                especial (+80 €)</label
+              >
+              <label
+                ><input type="checkbox" class="extra" value="120" /> SEO básico
+                (+120 €)</label
+              >
+              <label
+                ><input type="checkbox" class="extra" value="100" /> Dominio y
+                hosting 1 año (+100 €)</label
+              >
+            </div>
+          </div>
+          <div class="totales" aria-live="polite">
+            <div>
+              <div class="negrita">
+                Subtotal: <span id="subtotal">0 €</span>
+              </div>
+              <div class="negrita">
+                Descuento: <span id="descuento">0 €</span>
+              </div>
+            </div>
+            <div class="total-num" id="total">0 €</div>
+          </div>
+        </fieldset>
+        <div class="fila">
+          <label>
+            <input
+              type="checkbox"
+              id="condiciones"
+              name="condiciones"
+              required
+            />
+            Acepto las condiciones de privacidad
+          </label>
+          <div
+            id="err-condiciones"
+            class="errores"
+            role="alert"
+            aria-live="polite"
+          ></div>
+        </div>
+        <div class="acciones">
+          <button type="submit" class="btn btn-primario">Enviar</button>
+          <button type="reset" class="btn btn-sec">Reiniciar</button>
+        </div>
+        <p id="estado-envio" class="ayuda ok" aria-live="polite"></p>
+      </form>
+    </main>
+
+    <footer>
+      <p>
+        © 2027 MON. Todos los derechos reservados. |
+        <a href="https://share.google/l9ZkjFNyohd7TN6zo" id="enlace"
+          >Granada, Calle San Jeronimo (España) 24📍</a
+        >
+      </p>
+      <div class="redes">
+        <img src="../images/rrss/facebook.png" alt="Facebook" />
+        <img src="../images/rrss/instagram.png" alt="Instagram" />
+      </div>
+    </footer>
+  </body>
+</html>

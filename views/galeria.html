@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Galería</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <img src="../images/logo.png" alt="Logo" class="logo" />
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li class="activo"><a href="galeria.html">Galería</a></li>
+          <li><a href="presupuesto.html">Presupuesto</a></li>
+          <li><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <main class="galeria-vertical">
+      <h1>Galería de proyectos</h1>
+      <p>Haz clic en cualquier imagen para ampliarla y navegar entre ellas.</p>
+      <div class="galeria-grid" id="galeria"></div>
+    </main>
+    <!-- Modal -->
+    <div
+      id="modal"
+      role="dialog"
+      aria-modal="true"
+      aria-label="Imagen ampliada"
+    >
+      <div class="modal-contenido" id="modal-contenido">
+        <span class="modal-contador" id="modal-contador"></span>
+        <button class="modal-cerrar" id="modal-cerrar" aria-label="Cerrar">
+          &#x2715;
+        </button>
+        <button class="modal-nav prev" id="btn-prev" aria-label="Anterior">
+          &#8249;
+        </button>
+        <img id="modal-img" src="" alt="" />
+        <p class="modal-caption" id="modal-caption"></p>
+        <button class="modal-nav next" id="btn-next" aria-label="Siguiente">
+          &#8250;
+        </button>
+      </div>
+    </div>
+
+    <footer>
+      <p>
+        © 2027 MON. Todos los derechos reservados. |
+        <a href="https://share.google/l9ZkjFNyohd7TN6zo" id="enlace"
+          >Granada, Calle San Jeronimo (España) 24📍</a
+        >
+      </p>
+      <div class="redes">
+        <img src="../images/rrss/facebook.png" alt="Facebook" />
+        <img src="../images/rrss/instagram.png" alt="Instagram" />
+      </div>
+    </footer>
+    <script src="../js/galeria.js"></script>
+  </body>
+</html>

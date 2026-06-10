@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="../css/styles.css" />
+  </head>
+
+  <body>
+    <header>
+      <nav>
+        <img src="../images/logo.png" alt="Logo" class="logo" />
+        <ul>
+          <li><a href="../index.html">Inicio</a></li>
+          <li><a href="galeria.html">Galería</a></li>
+          <li><a href="presupuesto.html">Presupuesto</a></li>
+          <li class="activo"><a href="contacto.html">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+    <main>
+      <h1>Contacto</h1>
+      <div class="panel-rutas">
+        <input
+          id="origen"
+          type="text"
+          placeholder="Tu ubicación (o usa mi ubicación)"
+        />
+        <select id="modo">
+          <option value="DRIVING">Coche</option>
+          <option value="WALKING">A pie</option>
+          <option value="BICYCLING">Bici</option>
+          <option value="TRANSIT">Transporte público</option>
+        </select>
+        <button id="btn-geo">Usar mi ubicación</button>
+        <button id="btn-ruta">Calcular ruta</button>
+      </div>
+      <div id="map"></div>
+      <p>📍 Dirección: Granada, Calle San Jeronimo (España) 24</p>
+      <div id="indicaciones"></div>
+    </main>
+    <footer>
+      <p>
+        © 2027 MON. Todos los derechos reservados. |
+        <a href="https://share.google/l9ZkjFNyohd7TN6zo" id="enlace"
+          >Granada, Calle San Jeronimo (España) 24📍</a
+        >
+      </p>
+      <div class="redes">
+        <img src="../images/rrss/facebook.png" alt="Facebook" />
+        <img src="../images/rrss/instagram.png" alt="Instagram" />
+      </div>
+    </footer>
+
+    <script>
+      // Coordenadas de Granada
+      const MON = { lat: 37.1781, lng: -3.6008 };
+      let map, marker, directionsService, directionsRenderer;
+      function initMap() {
+        map = new google.maps.Map(document.getElementById("map"), {
+          center: MON,
+          zoom: 14,
+          mapTypeControl: false,
+        });
+        marker = new google.maps.Marker({
+          position: MON,
+          map,
+          title: "MON (Granada)",
+        });
+        directionsService = new google.maps.DirectionsService();
+        directionsRenderer = new google.maps.DirectionsRenderer({
+          map,
+          panel: document.getElementById("indicaciones"),
+        });
+        document
+          .getElementById("btn-geo")
+          .addEventListener("click", usarMiUbicacion);
+        document
+          .getElementById("btn-ruta")
+          .addEventListener("click", calcularRuta);
+      }
+      function usarMiUbicacion() {
+        if (!navigator.geolocation) {
+          alert("La geolocalización no está soportada en este navegador.");
+          return;
+        }
+        navigator.geolocation.getCurrentPosition(
+          (pos) => {
+            const { latitude, longitude } = pos.coords;
+            document.getElementById("origen").value =
+              `${latitude},${longitude}`;
+          },
+          (err) => {
+            alert("No se pudo obtener tu ubicación: " + err.message);
+          },
+          { enableHighAccuracy: true, timeout: 8000 },
+        );
+      }
+      function calcularRuta() {
+        const originInput = document.getElementById("origen").value.trim();
+        if (!originInput) {
+          alert('Indica tu ubicación o usa "Usar mi ubicación".');
+          return;
+        }
+        const modo = document.getElementById("modo").value;
+        directionsService.route(
+          {
+            origin: originInput,
+            destination: MON,
+            travelMode: google.maps.TravelMode[modo],
+            provideRouteAlternatives: true,
+          },
+          (result, status) => {
+            if (status === "OK") {
+              directionsRenderer.setDirections(result);
+            } else {
+              alert("No se pudo calcular la ruta: " + status);
+            }
+          },
+        );
+      }
+    </script>
+    <script
+      async
+      defer
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCs8JNrtI1zZUEYNxCydu3u1_d4p8D8Yzk&callback=initMap&v=weekly&language=es"
+    >
+      // API Key de Google
+    </script>
+  </body>
+</html>
