@@ -103,6 +103,25 @@ footer {
 
 /* Sección de servicios*/
 
+#servicios {
+    position: relative;
+    padding: 6rem 1.5rem 7rem;
+    background-image:
+      linear-gradient(var(--border) 1px, transparent 1px),
+      linear-gradient(90deg, var(--border) 1px, transparent 1px);
+    background-size: 48px 48px;
+    background-position: center top;
+    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 95%);
+    mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 95%);
+    overflow: hidden;
+}
+
+.servicios__inner{
+    position: relative;
+    max-width: 1120px;
+    margin: 0 auto;
+}
+
 .grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
@@ -120,6 +139,12 @@ footer {
   border: 1px solid #ddd;
   border-radius: 8px;
   background-color: #f3d0a5;
+}
+
+.services__header{
+    max-width: 640px;
+    margin: 0 auto 4rem;
+    text-align: center;
 }
 
 .servicios__label{
