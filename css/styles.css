@@ -7,13 +7,15 @@ body {
   margin: 0;
   font-family: "Gill Sans", "Gill Sans MT", Calibri, "Trebuchet MS", sans-serif;
   color: #333;
-  background-color: rgb(253, 253, 253);
+  background-color: #fdfdfd;
   display: flex;
   flex-direction: column;
   min-height: 100vh;
 }
 
 h2 {
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 600;
   font-size: 2.7em;
   border-top-width: 2px;
   border-bottom-width: 2px;
@@ -24,11 +26,12 @@ h2 {
 }
 
 h3 {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: 2.5em;
 }
 
 nav {
-  position: sticky;
+  position: fixed;
   top: 0;
   width: 100%;
   background: #111;
@@ -54,7 +57,7 @@ nav .activo a {
 }
 
 main {
-  padding: 30px 20px 0px 20px;
+  padding-top: 30px;
   flex: 1;
 }
 
@@ -82,6 +85,7 @@ footer {
 
 .hero {
   text-align: center;
+  margin-top: 100px;
   margin-left: 100px;
   margin-right: 100px;
 }
@@ -104,20 +108,12 @@ footer {
 /* Sección de servicios*/
 
 #servicios {
-    position: relative;
-    padding: 6rem 1.5rem 7rem;
-    background-image:
-      linear-gradient(var(--border) 1px, transparent 1px),
-      linear-gradient(90deg, var(--border) 1px, transparent 1px);
-    background-size: 48px 48px;
-    background-position: center top;
-    -webkit-mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 95%);
-    mask-image: radial-gradient(ellipse 80% 60% at 50% 20%, black 40%, transparent 95%);
-    overflow: hidden;
-}
+    background-image: linear-gradient(to bottom, #1e1b14, #0c0b08 );
+  }
 
 .servicios__inner{
     position: relative;
+    padding: 6rem 1.5rem 7rem;
     max-width: 1120px;
     margin: 0 auto;
 }
@@ -128,7 +124,7 @@ footer {
   gap: 1rem;
 }
 
-.grid div {
+.cards-servicios {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -136,9 +132,9 @@ footer {
   text-align: center;
   min-height: 200px;
   padding: 1rem;
-  border: 1px solid #ddd;
   border-radius: 8px;
-  background-color: #f3d0a5;
+  color: #fff;
+  background-image: linear-gradient(to bottom, #ffffff4b, #2a1f13a1);
 }
 
 .services__header{
@@ -152,9 +148,7 @@ footer {
     font-family: 'IBM Plex Mono', monospace;
     font-size: 0.75rem;
     letter-spacing: 0.14em;
-    color: var(--steel);
-    border: 1px solid var(--border);
-    border-radius: 3px;
+    color: #ddd;
     padding: 0.3rem 0.6rem;
     margin-bottom: 1.25rem;
 }
@@ -165,14 +159,36 @@ footer {
     font-size: clamp(1.75rem, 3.4vw, 2.5rem);
     line-height: 1.25;
     margin: 0 0 0.75rem;
+    color: #ddd;
 }
 
  .servicios__subtitle{
-    color: var(--text-muted);
+    color: #ddd;
     font-size: 1.02rem;
     line-height: 1.6;
     margin: 0;
  }
+
+ #noticias {
+  background-color: #fdfdfd;
+  background-image: 
+    linear-gradient(rgba(255, 141, 54, 0.1) 1px, transparent 1px), 
+    linear-gradient(90deg, rgba(242, 168, 58, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+ }
+ 
+
+ .noticia {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: 200px;
+  padding: 1rem;
+  border-radius: 8px;
+  background-image: linear-gradient(to bottom, #ffffff00, #f3d0a5);
+}
 
 /* Estilos del formulario*/
 
@@ -300,7 +316,9 @@ select {
 /* botón index solicitar presupuesto */
 
 #cta {
+  min-height: 500px;
   text-align: center;
+  align-content: center;
   margin: 1rem 0;
 }
 
